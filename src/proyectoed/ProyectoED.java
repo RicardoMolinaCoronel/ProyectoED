@@ -36,7 +36,7 @@ public class ProyectoED extends Application {
             ArrayList<Button> fila = new ArrayList(ncolumnas);
             for (int j =0; j<ncolumnas; j++){
                 Button b = new Button();
-                b.setText(String.valueOf(abecedario.charAt(random.nextInt(27))));
+//                b.setText(String.valueOf(abecedario.charAt(random.nextInt(27))));
                 fila.add(b);
             }    
             sopaBotones.add(fila);
@@ -66,9 +66,69 @@ public class ProyectoED extends Application {
 //            ArrayList<String> fila = new ArrayList(ncolumnas);
 //            for (int j =0; j<ncolumnas; j++){
 //                
+//        8x8
+// ArrayList<String> 
+// gato perro 
 //            }
 //        }
-        System.out.println(sopa.getColumnCount()+" "+sopa.getRowCount());
+
+        ArrayList<String> direccion = new ArrayList(4);
+        direccion.add("arriba");
+        direccion.add("abajo");
+        direccion.add("izquierda");
+        direccion.add("derecha");
+        ArrayList<String> palabras = new ArrayList(4);
+        palabras.add("hola");
+        
+        
+        for (int j = 0; j<palabras.size(); j++){
+            String palabra = palabras.get(j);
+            int tamanioPalabra = palabra.length();
+            if(tamanioPalabra<sopaBotones.size() || tamanioPalabra<sopaBotones.get(0).size()){
+                int ccc = random.nextInt(ncolumnas);
+                int ccf = random.nextInt(nfilas);
+                System.out.println(ccc+" "+ccf);
+                boolean control = true;
+                while (control){
+                    int dir = random.nextInt(direccion.size()-1);
+                    System.out.println(dir);
+                    if (direccion.get(dir) == "abajo"){
+                        if ((ccc+tamanioPalabra-1)<=ncolumnas-1){
+                            for(int i = 0; i<tamanioPalabra; i++){
+                                sopaBotones.get(ccc).get(ccf).setText(String.valueOf(palabra.charAt(i)));
+                                ccf++;
+                            }
+                            control = false;
+                        }
+                    }else if(direccion.get(dir) == "arriba"){
+                        if ((ccc-tamanioPalabra-1)<=ncolumnas-1 && (ccc-tamanioPalabra-1)>= 0){
+                            for(int i = 0; i<tamanioPalabra; i++){
+                                sopaBotones.get(ccc).get(ccf).setText(String.valueOf(palabra.charAt(i)));
+                                ccf++;
+                            }
+                            control = false;
+                        }
+                    }else if(direccion.get(dir) == "izquierda"){
+                        if ((ccf-tamanioPalabra-1)<=nfilas-1 && (ccf-tamanioPalabra-1)>= 0){
+                            for(int i = 0; i<tamanioPalabra; i++){
+                                sopaBotones.get(ccc).get(ccf).setText(String.valueOf(palabra.charAt(i)));
+                                ccc--;
+                            }
+                            control = false;
+                        }
+                    }else if(direccion.get(dir) == "derecha"){
+                        if ((ccf+tamanioPalabra-1)<=nfilas-1){
+                            for(int i = 0; i<tamanioPalabra; i++){
+                                sopaBotones.get(ccc).get(ccf).setText(String.valueOf(palabra.charAt(i)));
+                                ccc++;
+                            }
+                            control = false;
+                        }
+                    }
+                }
+            }    
+        }
+        
         root.getChildren().add(sopa);
         Scene scene = new Scene(root, 300, 250);
         
