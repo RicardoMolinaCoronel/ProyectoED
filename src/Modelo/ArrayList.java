@@ -138,6 +138,14 @@ public class ArrayList<E> implements List<E>{
         return it;
     }
     
+    public void set(int index, E element){
+        if (element!=null) {
+            if(index <= capacity-1){
+                elements[index]=element;
+            }
+        }
+    }
+    
     public static void main(String args[]){
         ArrayList<Integer> al = new ArrayList(3);
         al.add(1);

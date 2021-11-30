@@ -22,4 +22,5 @@ public interface List<E> {
     
     public void clear();
     
+    public void set(int index, E element);
 }
