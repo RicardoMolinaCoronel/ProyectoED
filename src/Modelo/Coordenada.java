@@ -11,7 +11,7 @@ package Modelo;
 public class Coordenada {
     private int fila;
     private int columna;
-    public boolean ocurrencia;
+    private boolean ocurrencia;
     
     public Coordenada(int fila, int columna) {
         this.fila = fila;
@@ -40,5 +40,13 @@ public class Coordenada {
     @Override
     public String toString() {
         return fila + " " + columna;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+    public void setColumna(int columna) {
+        this.columna = columna;
     }
 }

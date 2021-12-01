@@ -67,7 +67,7 @@ public class pruebas extends Application{
             String palabra = palabras.get(indice);
             boolean control =false;
             int tamanio = palabra.length();
-            Coordenada cci = new Coordenada(generador.nextInt(8),generador.nextInt(8));
+            Coordenada cci = new Coordenada(generador.nextInt(nfilas),generador.nextInt(ncolumnas));
             SpecializedButton b1 = sopaBotones.get(cci.getColumna()).get(cci.getFila());
             if((b1.getText().equals("0")) || String.valueOf(palabra.charAt(0)).equals(b1.getText())){
                 direccionesPosibles = analizarDirecciones(cci, tamanio, ncolumnas, nfilas);
@@ -91,11 +91,14 @@ public class pruebas extends Application{
                 sopa.add(b,i,j);
             }
         }
+        
+        
         Scene scene = new Scene(root, 300, 250);
         root.getChildren().add(sopa);
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        eliminarColumna(sopaBotones,sopa,2,root);
     }
 
     public static void main(String[] args) {

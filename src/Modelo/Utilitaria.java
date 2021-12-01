@@ -10,6 +10,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import static Modelo.Diccionario.*;
+import javafx.application.Platform;
+import javafx.scene.layout.StackPane;
 
 
 /**
@@ -507,6 +509,7 @@ public class Utilitaria{
             @Override
             public void handle(ActionEvent MOUSE_CLICKED) {
                 controlador.push(b);
+                System.out.println(b.getCoordenadas());
                 b.setStyle("-fx-background-color: GRAY");
                 if(controlador.size() == 2){
                     SpecializedButton bp1 = controlador.pop();
@@ -583,4 +586,32 @@ public class Utilitaria{
             }
         }
     }
+    
+    public static void actualizarCoordenadas(ArrayList<ArrayList<SpecializedButton>> sopaBotones){
+        for(int i = 0; i<sopaBotones.size(); i++){
+            for(int j = 0; j<sopaBotones.get(i).size(); j++){
+                sopaBotones.get(i).get(j).getCoordenadas().setColumna(i);
+                sopaBotones.get(i).get(j).getCoordenadas().setFila(j);
+            }
+        }
+    }
+    public static GridPane actualizarSopa(ArrayList<ArrayList<SpecializedButton>> sopaBotones){
+        GridPane nueva = new GridPane();
+        for(int i = 0; i<sopaBotones.size(); i++){
+            for(int j = 0; j<sopaBotones.get(i).size(); j++){
+                System.out.println(j+" "+i);
+                SpecializedButton b = sopaBotones.get(i).get(j);
+                nueva.add(b,i,j);
+            }
+        }
+        return nueva;
+    }
+    
+    public static void eliminarColumna(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int columna, StackPane root){
+        sopaBotones.remove(columna);
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().add(sopa);
+    }
+    
 }

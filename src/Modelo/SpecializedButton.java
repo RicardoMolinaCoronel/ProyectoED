@@ -21,4 +21,5 @@ public class SpecializedButton extends Button{
     public Coordenada getCoordenadas() {
         return coordenadas;
     }
+
 }
