@@ -15,22 +15,19 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class Diccionario {
-    private ArrayList<String> palabras= new ArrayList<String>();
-    public ArrayList<String> getPalabras() {
-        return palabras;
-    }
     
     
-    public void leerArchivo(String nombreArchivo) throws FileNotFoundException, IOException{
-        BufferedReader reader = new BufferedReader(new FileReader("src/Modelo/"+nombreArchivo, StandardCharsets.UTF_8));
+    public static ArrayList<String> leerArchivo(String nombreArchivo) throws FileNotFoundException, IOException{
+        ArrayList<String> palabras= new ArrayList<String>();
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/java/ec/edu/espol/mavenproject1/"+nombreArchivo, StandardCharsets.UTF_8));
         String line;
         while ((line= reader.readLine())!= null){
             palabras.add(line);
         }
-        Iterator it = palabras.iterator();
+        return palabras;
     }
     
-   public boolean calificarPalabra(String respuesta, ArrayList<String> palabras){
+   public static boolean calificarPalabra(String respuesta, ArrayList<String> palabras){
         boolean coincide = false;
         Iterator<String> it = palabras.iterator();
         char ch;
@@ -46,7 +43,7 @@ public class Diccionario {
         return coincide;       
     }
     
-   public ArrayList<String> hallarPalabras(int columnas, int filas, ArrayList<String> palabras){
+   public static ArrayList<String> hallarPalabras(int columnas, int filas, ArrayList<String> palabras){
        ArrayList<String> seleccion = new ArrayList<String>();
        int longitud=0;
        int cantidad=0;
@@ -67,4 +64,5 @@ public class Diccionario {
        }
        return seleccion;
    }
+   
 }
