@@ -117,6 +117,7 @@ public class ArrayList<E> implements List<E>{
     public void clear() {
         for(int i = 0; i < elements.length; i++){
             elements[i] = null;
+            effectiveSize=0;
         }
     }
     
@@ -144,6 +145,14 @@ public class ArrayList<E> implements List<E>{
                 elements[index]=element;
             }
         }
+    }
+    public boolean contains(E element){
+        for(int i=0; i<elements.length; i++){
+            if(elements[i].equals(element)){
+                return true;
+            }
+        }
+        return false;
     }
     
     public static void main(String args[]){
