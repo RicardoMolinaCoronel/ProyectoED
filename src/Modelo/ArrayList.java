@@ -67,9 +67,10 @@ public class ArrayList<E> implements List<E>{
     @Override
     public void add(int index, E element) {
         if (element != null){
-            if(index <= capacity-1){
+            if(index < capacity){
                 addCapacity(1);
-                System.arraycopy(elements, index, elements, index+1, capacity-index);
+                System.arraycopy(elements, index, elements, index+1, capacity-index-1);
+                elements[index]=element;
                 effectiveSize++;
             }else{
                 System.out.println();//aqui debe arrojar excepcion
@@ -79,7 +80,7 @@ public class ArrayList<E> implements List<E>{
 
     public void add(E element){
         if (element != null){
-            if(effectiveSize <= capacity-1){
+            if(effectiveSize <= capacity){
                 elements[effectiveSize] = element;
                 effectiveSize++;
             }
@@ -159,6 +160,8 @@ public class ArrayList<E> implements List<E>{
         ArrayList<Integer> al = new ArrayList(3);
         al.add(1);
         al.add(2);
-        al.add(3);        
+        al.add(3);   
+        al.add(1,Integer.valueOf(5));
+        for (int i=0; i<al.size(); i++){System.out.println(al.get(i));}
     }
 }

@@ -29,9 +29,9 @@ public class pruebas extends Application{
         
         String abecedario = "abcdefghijklmnñopqrstuvwxyz";
         Random generador = new Random();
-        int nfilas = 8;
-        int ncolumnas = 8;
-        ArrayList<String> palabras = new ArrayList();
+        int nfilas = 8;//deben ser las solicitaas por el jugador
+        int ncolumnas = 8;//deben ser las solicitaas por el jugador
+        ArrayList<String> palabras = new ArrayList();//es la lista que se adquiere del metodo diccionario 
         palabras.add("hola");
         palabras.add("crazy");
         palabras.add("tomate");
@@ -39,7 +39,7 @@ public class pruebas extends Application{
         palabras.add("mama");
         palabras.add("papa");
         palabras.add("tiro");
-        ArrayList<String> palabrasdef = new ArrayList();
+        ArrayList<String> palabrasdef = new ArrayList();//copia de la primera para llenarla usen un for con el primer arraylist de palabras ya que ese se vacia a lo que smanda a llenar la sopa
         palabrasdef.add("hola");
         palabrasdef.add("crazy");
         palabrasdef.add("tomate");
@@ -98,7 +98,6 @@ public class pruebas extends Application{
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
-        eliminarColumna(sopaBotones,sopa,2,root);
     }
 
     public static void main(String[] args) {

@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import static Modelo.Diccionario.*;
+import java.util.Random;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
 
@@ -599,7 +600,6 @@ public class Utilitaria{
         GridPane nueva = new GridPane();
         for(int i = 0; i<sopaBotones.size(); i++){
             for(int j = 0; j<sopaBotones.get(i).size(); j++){
-                System.out.println(j+" "+i);
                 SpecializedButton b = sopaBotones.get(i).get(j);
                 nueva.add(b,i,j);
             }
@@ -611,7 +611,49 @@ public class Utilitaria{
         sopaBotones.remove(columna);
         actualizarCoordenadas(sopaBotones);
         sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
         root.getChildren().add(sopa);
     }
     
+    public static void eliminarFila(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int fila, StackPane root){
+        for(int i = 0; i<sopaBotones.size(); i++){
+            sopaBotones.get(i).remove(fila);
+        }
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);
+    }
+    
+    public static void agregarColumna(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int columna, StackPane root, Stack<SpecializedButton> controlador, ArrayList<String> palabras){
+        String abecedario = "abcdefghijklmnñopqrstuvwxyz";
+        Random generador = new Random();
+        int largo = sopaBotones.size();
+        ArrayList<SpecializedButton> nueva = new ArrayList(largo);
+        for(int i=0; i<largo; i++){
+            SpecializedButton b = new SpecializedButton(new Coordenada(i,columna),String.valueOf(abecedario.charAt(generador.nextInt(27))));
+            setearEvento(b,controlador,sopaBotones,palabras);
+            nueva.add(b);
+        }
+        sopaBotones.add(columna,nueva);
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);        
+    }
+    
+    public static void agregarFila(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int fila, StackPane root, Stack<SpecializedButton> controlador, ArrayList<String> palabras){
+        String abecedario = "abcdefghijklmnñopqrstuvwxyz";
+        Random generador = new Random();
+        int ancho = sopaBotones.get(0).size();
+        for(int i=0; i<ancho; i++){System.out.println(i);
+            SpecializedButton b = new SpecializedButton(new Coordenada(fila,i),String.valueOf(abecedario.charAt(generador.nextInt(27))));
+            setearEvento(b,controlador,sopaBotones,palabras);
+            sopaBotones.get(i).add(fila,b);
+        }
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);        
+    }
 }
