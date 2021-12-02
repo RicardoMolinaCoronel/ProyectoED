@@ -5,6 +5,7 @@
 package Modelo;
 
 import static Modelo.Utilitaria.*;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
 import javafx.application.Application;
@@ -22,7 +23,7 @@ public class pruebas extends Application{
     
     @Override
     @SuppressWarnings("empty-statement")
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         
         GridPane sopa = new GridPane();
         StackPane root = new StackPane();
@@ -31,22 +32,13 @@ public class pruebas extends Application{
         Random generador = new Random();
         int nfilas = 8;//deben ser las solicitaas por el jugador
         int ncolumnas = 8;//deben ser las solicitaas por el jugador
-        ArrayList<String> palabras = new ArrayList();//es la lista que se adquiere del metodo diccionario 
-        palabras.add("hola");
-        palabras.add("crazy");
-        palabras.add("tomate");
-        palabras.add("adan");
-        palabras.add("mama");
-        palabras.add("papa");
-        palabras.add("tiro");
+        String nombreArchivo = "español.txt";
+        ArrayList<String> palabras = Diccionario.leerArchivo(nombreArchivo);//es la lista que se adquiere del metodo diccionario 
+       
         ArrayList<String> palabrasdef = new ArrayList();//copia de la primera para llenarla usen un for con el primer arraylist de palabras ya que ese se vacia a lo que smanda a llenar la sopa
-        palabrasdef.add("hola");
-        palabrasdef.add("crazy");
-        palabrasdef.add("tomate");
-        palabrasdef.add("adan");
-        palabrasdef.add("mama");
-        palabrasdef.add("papa");
-        palabrasdef.add("tiro");
+        for(int i= 0; i<palabras.size();i++){
+            palabrasdef.add(palabras.get(i));
+        }
         
         Stack<SpecializedButton> controlador = new Stack();
         ArrayList<ArrayList<SpecializedButton>> sopaBotones = new ArrayList(ncolumnas);
