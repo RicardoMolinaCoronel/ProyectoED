@@ -656,4 +656,72 @@ public class Utilitaria{
         root.getChildren().clear();
         root.getChildren().add(sopa);        
     }
+    
+    public static void rotarFilaIzq(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int fila, StackPane root){
+        int tamanio = sopaBotones.get(0).size();
+        ArrayList<SpecializedButton> tmp = new ArrayList(tamanio);
+        ArrayList<SpecializedButton> tmp1 = new ArrayList(tamanio);
+        for(int i =0; i<tamanio; i++){
+            tmp.set(0,sopaBotones.get(i).get(fila));
+        }
+        tmp1.set(tmp.size()-1, tmp.get(0));
+        for (int i=1; i<tmp.size(); i++){
+            tmp1.set(i-1, tmp.get(i));
+        }
+        for(int i =0; i<tamanio; i++){
+            sopaBotones.get(i).set(fila,tmp1.get(i));
+        }
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);         
+    }
+    
+    public static void rotarFilaDer(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int fila, StackPane root){
+        int tamanio = sopaBotones.get(0).size();
+        ArrayList<SpecializedButton> tmp = new ArrayList(tamanio);
+        ArrayList<SpecializedButton> tmp1 = new ArrayList(tamanio);
+        for(int i =0; i<tamanio; i++){
+            tmp.set(0,sopaBotones.get(i).get(fila));
+        }
+        tmp1.set(0, tmp.get(tmp.size()-1));
+        for (int i=1; i<tmp.size(); i++){
+            tmp1.set(i, tmp.get(i-1));
+        }
+        for(int i =0; i<tamanio; i++){
+            sopaBotones.get(i).set(fila,tmp1.get(i));
+        }
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);         
+    }
+    
+    public static void rotarColumnaArr(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int columna, StackPane root){
+        ArrayList<SpecializedButton> tmp = sopaBotones.get(columna);
+        ArrayList<SpecializedButton> tmp1 = new ArrayList(tmp.size());
+        tmp1.set(tmp.size()-1, tmp.get(0));
+        for (int i=1; i<tmp.size(); i++){
+            tmp1.set(i-1, tmp.get(i));
+        }
+        sopaBotones.set(columna,tmp1);
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);   
+    }
+    
+    public static void rotarColumnaAbj(ArrayList<ArrayList<SpecializedButton>> sopaBotones, GridPane sopa, int columna, StackPane root){
+        ArrayList<SpecializedButton> tmp = sopaBotones.get(columna);
+        ArrayList<SpecializedButton> tmp1 = new ArrayList(tmp.size());
+        tmp1.set(0, tmp.get(tmp.size()-1));
+        for (int i=1; i<tmp.size(); i++){
+            tmp1.set(i, tmp.get(i-1));
+        }
+        sopaBotones.set(columna,tmp1);
+        actualizarCoordenadas(sopaBotones);
+        sopa = actualizarSopa(sopaBotones);
+        root.getChildren().clear();
+        root.getChildren().add(sopa);   
+    }
 }

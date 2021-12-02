@@ -143,7 +143,12 @@ public class ArrayList<E> implements List<E>{
     public void set(int index, E element){
         if (element!=null) {
             if(index <= capacity-1){
-                elements[index]=element;
+                if(elements[index]==null){
+                    elements[index]=element;
+                    effectiveSize++;
+                }else{
+                    elements[index]=element;
+                }
             }
         }
     }

@@ -98,6 +98,7 @@ public class pruebas extends Application{
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        rotarFilaIzq(sopaBotones,sopa,2,root);
     }
 
     public static void main(String[] args) {
