@@ -24,14 +24,12 @@ import javafx.stage.Stage;
  * @author rdavi
  */
 public class ProyectoED extends Application {
-    private static Scene scene;
+    
     @Override
     public void start(Stage primaryStage) throws IOException{
-        scene = new Scene(loadFXML("FXML"), 640, 480);
-        primaryStage.setScene(scene);
-        primaryStage.show();
         
-        /*
+        
+        
         String abecedario = "abcdefghijklmnñopqrstuvwxyz";
         StackPane root = new StackPane();
         Random random = new Random();
@@ -143,19 +141,13 @@ public class ProyectoED extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
-        */
+        
     }
 
     /**
      * @param args the command line arguments
      */
-     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ProyectoED.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+     
     public static void main(String[] args) {
         launch(args);
     }
