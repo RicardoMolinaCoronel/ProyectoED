@@ -81,7 +81,7 @@ public class ProyectoED extends Application {
             ArrayList<Button> fila = new ArrayList(ncolumnas);
             for (int j =0; j<ncolumnas; j++){
                 Button b = new Button();
-//                b.setText(String.valueOf(abecedario.charAt(random.nextInt(27))));
+                b.setText(String.valueOf(abecedario.charAt(random.nextInt(27))));
                 fila.add(b);
             }    
             sopaBotones.add(fila);
