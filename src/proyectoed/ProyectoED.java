@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
@@ -65,12 +66,10 @@ public class ProyectoED extends Application {
         btnLogin.setPrefHeight(44);                
         btnLogin.setMaxWidth(Double.MAX_VALUE);
         btnLogin.setCursor(Cursor.HAND);
+                btnLogin.setOnAction(new EventHandler<ActionEvent>(){
+        public void handle(ActionEvent event){
         
-        
-        vbox.getChildren().addAll(labelTitle, filas, textUser, columnas, textColumnas, btnLogin);
-        vbox.setAlignment(Pos.CENTER);
-        /*
-        String abecedario = "abcdefghijklmnñopqrstuvwxyz";
+             String abecedario = "abcdefghijklmnñopqrstuvwxyz";
         StackPane root = new StackPane();
         Random random = new Random();
         GridPane sopa = new GridPane();
@@ -181,7 +180,20 @@ public class ProyectoED extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
-        */
+          
+        }
+    });
+        
+        VBox.setMargin(filas, new Insets(10, 0, 0, 0));
+        VBox.setMargin(columnas, new Insets(10, 0, 0, 0));
+        VBox.setMargin(btnLogin, new Insets(20, 0, 0, 0));
+        
+        vbox.getChildren().addAll(labelTitle, filas, textUser, columnas, textColumnas, btnLogin);
+        vbox.setAlignment(Pos.CENTER);
+
+        
+        
+        
         
         Scene scene = new Scene(vbox, 854, 503);
         
