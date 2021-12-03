@@ -32,6 +32,8 @@ import javafx.stage.Stage;
  * @author rdavi
  */
 public class ProyectoED extends Application {
+   int nfilas;
+   int ncolumnas;
    @Override
     public void start(Stage primaryStage) {
         VBox vbox = new VBox();
@@ -73,8 +75,8 @@ public class ProyectoED extends Application {
         StackPane root = new StackPane();
         Random random = new Random();
         GridPane sopa = new GridPane();
-        int nfilas = 8;
-        int ncolumnas = 8;
+        nfilas=Integer.parseInt(textUser.getText());
+        ncolumnas=Integer.parseInt(textColumnas.getText());
         
         ArrayList<ArrayList<Button>> sopaBotones = new ArrayList(nfilas);
         for (int i = 0; i<nfilas; i++){
