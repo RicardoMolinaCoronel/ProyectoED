@@ -5,6 +5,7 @@
 package proyectoed;
 
 import Modelo.ArrayList;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
@@ -12,11 +13,17 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -24,12 +31,45 @@ import javafx.stage.Stage;
  * @author rdavi
  */
 public class ProyectoED extends Application {
-    
-    @Override
-    public void start(Stage primaryStage) throws IOException{
+   @Override
+    public void start(Stage primaryStage) {
+        VBox vbox = new VBox();
+        Label labelTitle = new Label("Sopa de letras");
+        labelTitle.setFont(new Font(40));
+        Label filas = new Label("Filas");
+        //Cambiamos tamaño de fuente
+        filas.setFont(new Font(20));
+         Label columnas = new Label("Columnas");
+        //Cambiamos tamaño de fuente
+        columnas.setFont(new Font(20));
+        
+        TextField textUser = new TextField();
+        textUser.setFont(new Font(18));
+        //Agregamos texto informativo al textField
+        textUser.setPromptText("Ingrese las filas");
+        //asignamos dimensiones predefinidas
+        textUser.setPrefWidth(341);
+        textUser.setPrefHeight(44);
+        
+        TextField textColumnas = new TextField();
+        textColumnas.setFont(new Font(18));
+        //Agregamos texto informativo al textField
+        textColumnas.setPromptText("Ingrese las Columnas");
+        //asignamos dimensiones predefinidas
+        textColumnas.setPrefWidth(341);
+        textColumnas.setPrefHeight(44); 
+        
+         Button btnLogin = new Button("Aceptar");
+        btnLogin.setFont(new Font(20));
+        btnLogin.setPrefWidth(370);
+        btnLogin.setPrefHeight(44);                
+        btnLogin.setMaxWidth(Double.MAX_VALUE);
+        btnLogin.setCursor(Cursor.HAND);
         
         
-        
+        vbox.getChildren().addAll(labelTitle, filas, textUser, columnas, textColumnas, btnLogin);
+        vbox.setAlignment(Pos.CENTER);
+        /*
         String abecedario = "abcdefghijklmnñopqrstuvwxyz";
         StackPane root = new StackPane();
         Random random = new Random();
@@ -141,15 +181,21 @@ public class ProyectoED extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        */
         
+        Scene scene = new Scene(vbox, 854, 503);
+        
+        primaryStage.setTitle("Sopa de Letras");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /**
      * @param args the command line arguments
      */
-     
     public static void main(String[] args) {
         launch(args);
     }
+
     
 }
